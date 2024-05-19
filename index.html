@@ -857,9 +857,13 @@
               <h2 class="ftco-heading-2">About</h2>
               <p>Hello, I'm Muhammad Khais, founder of 369degree Group. Since 2017, we've expanded from India to the UAE, merging technology with business to drive innovation. Join us in transforming business operations and leading the digital revolution.</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <!-- <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li> -->
                 <li class="ftco-animate"><a href="https://www.facebook.com/khaiskazi?mibextid=LQQJ4d"><span class="icon-facebook"></span></a></li>
                 <li class="ftco-animate"><a href="https://www.instagram.com/khais369degree/?igsh=YzVkODRmOTdmMw%3D%3D&utm_source=qr"><span class="icon-instagram"></span></a></li>
+				<li class="ftco-animate"><a href="https://www.youtube.com/@Khais369degree"><span class="icon-youtube"></span></a></li>
+				<li class="ftco-animate"><a href="#" id="whatsapp-link"><span class="icon-whatsapp"></span></a></li>
+				<li class="ftco-animate"><a href="#" id="telegram-link"><span class="icon-telegram"></span></a></li>
+				
               </ul>
             </div>
           </div>
@@ -955,26 +959,40 @@
 
       // Redirect to WhatsApp 
       window.location.href = whatsappURL;
-	  // Optionally, you can send the form data to a server using fetch or XMLHttpRequest
-	  /*
-	  fetch('/your-endpoint', {
-		method: 'POST',
-		headers: {
-		  'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({
-		  name: name,
-		  email: email,
-		  subject: subject,
-		  message: message,
-		}),
-	  })
-	  .then(response => response.json())
-	  .then(data => console.log('Success:', data))
-	  .catch(error => console.error('Error:', error));
-	  */
+	  
 	});
 	</script>
- 	
+ 	<script>
+		document.getElementById('whatsapp-link').addEventListener('click', function(event) {
+		  event.preventDefault(); 
+	
+		 
+		  const phoneNumber = '+971543670369';
+		  const message = "Hello."; 
+	
+		  // Construct the WhatsApp URL
+		  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+	
+		  // Redirect to WhatsApp
+		  window.location.href = whatsappURL;
+		});
+	  </script>
+	  <script>
+		document.getElementById('telegram-link').addEventListener('click', function(event) {
+		  event.preventDefault(); // Prevent the default link behavior
+	
+		  // Your Telegram phone number in international format with the '+' sign
+		  const phoneNumber = '+971543670369';
+	
+		  const message = "Hello,"; // Optional pre-filled message
+
+		// Construct the Telegram URL
+		const telegramURL = `https://t.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+	
+		  // Redirect to Telegram
+		  window.location.href = telegramURL;
+		});
+	  </script>
   </body>
 </html>
