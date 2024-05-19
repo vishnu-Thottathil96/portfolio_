@@ -821,18 +821,18 @@
 
         <div class="row no-gutters block-9">
           <div class="col-md-6 order-md-last d-flex">
-            <form action="#" class="bg-light p-4 p-md-5 contact-form">
+            <form id="contact-form" onsubmit={clickHandler} class="bg-light p-4 p-md-5 contact-form" >
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Name">
+                <input name="name" type="text" class="form-control" placeholder="Your Name">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Email">
+                <input name="email" type="text" class="form-control" placeholder="Your Email">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject">
+                <input name="phone" type="number" class="form-control" placeholder="Your Phone">
               </div>
               <div class="form-group">
-                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
               </div>
               <div class="form-group">
                 <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
@@ -934,6 +934,47 @@
   <script src="js/scrollax.min.js"></script>
   
   <script src="js/main.js"></script>
-    
+  <script>
+	document.getElementById('contact-form').addEventListener('submit', function(event) {
+	  event.preventDefault(); // Prevent the default form submission
+	
+	  // Get the form values
+	  const name = document.querySelector('input[name="name"]').value;
+	  const email = document.querySelector('input[name="email"]').value;
+	  const phone = document.querySelector('input[name="phone"]').value;
+	  const message = document.querySelector('textarea[name="message"]').value;
+	
+	  // Log the values to the console (or handle them as needed)
+	  console.log('Name:', name);
+	  console.log('Email:', email);
+	  console.log('Subject:', phone);
+	  console.log('Message:', message);
+	// Construct the WhatsApp URL
+	const whatsappMessage = `Thank you for contacting us: ${name} . ${email} . ${phone} . ${message}`;
+      const whatsappURL = `https://api.whatsapp.com/send?phone=+971%20543670369&text=${encodeURIComponent(whatsappMessage)}&app_absent=0`;
+
+      // Redirect to WhatsApp 
+      window.location.href = whatsappURL;
+	  // Optionally, you can send the form data to a server using fetch or XMLHttpRequest
+	  /*
+	  fetch('/your-endpoint', {
+		method: 'POST',
+		headers: {
+		  'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+		  name: name,
+		  email: email,
+		  subject: subject,
+		  message: message,
+		}),
+	  })
+	  .then(response => response.json())
+	  .then(data => console.log('Success:', data))
+	  .catch(error => console.error('Error:', error));
+	  */
+	});
+	</script>
+ 	
   </body>
 </html>
